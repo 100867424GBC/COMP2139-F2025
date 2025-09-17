@@ -1,12 +1,22 @@
 ﻿@{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "Welcome to the About Page"; 
+
+    var studentName = "Billy Boodoo";
+    var studentNumber = "100867424";
+    var courseCode = "COMP2139";
+    var CourseSection = "Lab Class";
 }
 
-<h1>About Me</h1>
+<div class="text-center">
+    <h1>@ViewData["Title"]</h1>
+    <br/>
+</div>
 
-<pre>
-    o Student Name: Billy Boodoo
-    o Student Number: 100867424
-    o Course Code: COMP2139
-    o Course Section: Lab Class 
-</pre>
+<div>
+    
+    <p>&#9830; Student Name: @studentName</p>
+    <p>&#9830; Student Number: @studentNumber</p>
+    <p>&#9830; Course Code: @courseCode</p>
+    <p>&#9830; Course Section: @CourseSection</p>
+    
+</div>

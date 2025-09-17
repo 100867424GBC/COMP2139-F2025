@@ -1,0 +1,68 @@
+﻿@* specifies that this view expects a Project object *@
+
+@model Project
+
+@{
+
+    ViewData["Title"] = "Create Project"; //sets the title of the view to "Create Project".
+
+}
+
+
+<h2>Create Project</h2>
+
+
+<form asp-action="Create" method="post"> <!-- indicates that the form data will be submitted to the Create action of the current controller -->
+
+
+    <div class="form-group">
+
+        <label asp-for="Name" class="control-label"></label> <!-- asp-for tag used to bind input fields to the corresponding model properties -->
+
+        <input asp-for="Name" class="form-control" />
+
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label asp-for="Description" class="control-label"></label>
+
+        <textarea asp-for="Description" class="form-control"></textarea>
+
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+    </div>
+
+
+    <!-- Include other fields as necessary -->
+
+    <div class="form-group">
+
+        <input type="submit" value="Create" class="btn btn-primary" />
+
+    </div>
+
+
+</form>
+
+
+<!--
+
+The section Scripts block at the bottom includes client-side validation scripts
+
+_ValidationScriptsPartial is by default available in Shared/ folder.
+
+-->
+
+@section Scripts {
+
+    @{
+
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+
+}
