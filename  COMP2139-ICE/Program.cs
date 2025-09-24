@@ -1,7 +1,16 @@
+using COMP2139_ICE.Data;  
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// ----------------------
+// 2. DB Connection
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+// -----------------------
 
 var app = builder.Build();
 
@@ -27,3 +36,4 @@ app.MapControllerRoute(
 
 
 app.Run();
+
