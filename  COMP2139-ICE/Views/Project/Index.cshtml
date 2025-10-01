@@ -3,67 +3,80 @@
 @model List<Project>
 
 @{
-
+    
     ViewData["Title"] = "Projects";
-
+    
 }
 
 
 <h2>Projects</h2>
 
+<!--Lab4 - Part5 - #1 -->
+<a asp-action="Create" class="btn btn-primary">Create New Project</a>
 
-@if (Model.Any()) // to determine if there are any projects to display
+@if (Model.Any())   // to determine if there are any projects to display
 
 {
-
-<table class="table">
-
-    <thead>
-
-    <tr>
-
-        <th>ID</th>
-
-        <th>Name</th>
-
-        <th>Description</th>
-
-        <!-- Add other project properties as needed -->
-
-    </tr>
-
-    </thead>
-
-    <tbody>
-
-    <!-- A foreach loop is used to iterate over each Project in the model and display its properties in the table rows. -->
-
-    @foreach (var project in Model)
-
-    {
+    
+    <table class="table">
+        
+        <thead>
+        
         <tr>
-
-            <td>@project.ProjectId</td>
-
-            <td>@project.Name</td>
-
-            <td>@project.Description</td>
-
-            <!-- Render other project properties as needed -->
-
+            
+            <th>ID</th>
+            
+            <th>Name</th>
+            
+            <th>Description</th>
+            
+            <th>Action</th> 
+            <!-- Add other project properties as needed -->
+            
         </tr>
-    }
+        
+        </thead>
+        
+        <tbody>
+        
+        <!-- A foreach loop is used to iterate over each Project in the model and display its properties in the table rows. -->
+        
+        @foreach (var project in Model)
+            
+        {
+            
+            <tr>
+                
+                <td>@project.ProjectId</td>
+                
+                <td>@project.Name</td>
+                
+                <td>@project.Description</td>
 
-    </tbody>
+                <td>
+                    <!--Lab4 - Part5 - #1 -->
+                    <!-- "Details" -->
+                    <a asp-action="Details" asp-route-id="@project.ProjectId" class="btn btn-info">Details</a>
 
-</table>
-
+                    <!-- Delete -->
+                    <a asp-action="Delete" asp-route-id="@project.ProjectId" class="btn btn-danger">Delete</a>
+                </td>
+                
+                <!-- Render other project properties as needed -->
+                
+            </tr>
+        }
+    
+        </tbody>
+        
+    </table>
+    
 }
 
 else
-
+    
 {
-
-<p>No projects available.</p>
-
+    
+    <p>No projects available.</p>
+    
 }
