@@ -60,6 +60,12 @@
 
                     <!-- Delete -->
                     <a asp-action="Delete" asp-route-id="@project.ProjectId" class="btn btn-danger">Delete</a>
+                    
+                    <!-- Edit -->
+                    <a asp-action="Edit" asp-route-id="@project.ProjectId" class="btn btn-danger">Edit</a>
+                    
+                    <!-- View Tasks -->
+                    <a asp-controller="ProjectTask" asp-action="Index" asp-route-projectId="@project.ProjectId" class="btn btn-info">View Tasks</a>
                 </td>
                 
                 <!-- Render other project properties as needed -->
