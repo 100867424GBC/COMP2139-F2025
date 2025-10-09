@@ -74,4 +74,7 @@ public class Project
     
     public string? Status { get; set; }
     
+    // Week 6
+    public List<ProjectTask>? Tasks { get; set; } = new();
+    
 }
