@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FRMWQ34WvQE=",
+  "dgSpecHash": "OxuOlCpt3j0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Windows Home\\Desktop\\F25\\COMP2139\\COMP2139-ICE\\ COMP2139-ICE\\COMP2139-ICE.csproj",
+  "projectFilePath": "C:\\Users\\Windows Home\\Desktop\\COMP2139 Lab 7 Clone\\ COMP2139-ICE\\COMP2139-ICE.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Windows Home\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Windows Home\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

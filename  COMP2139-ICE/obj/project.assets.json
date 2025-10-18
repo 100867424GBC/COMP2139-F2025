@@ -10884,11 +10884,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Windows Home\\Desktop\\F25\\COMP2139\\COMP2139-ICE\\ COMP2139-ICE\\COMP2139-ICE.csproj",
+      "projectUniqueName": "C:\\Users\\Windows Home\\Desktop\\COMP2139 Lab 7 Clone\\ COMP2139-ICE\\COMP2139-ICE.csproj",
       "projectName": "COMP2139-ICE",
-      "projectPath": "C:\\Users\\Windows Home\\Desktop\\F25\\COMP2139\\COMP2139-ICE\\ COMP2139-ICE\\COMP2139-ICE.csproj",
+      "projectPath": "C:\\Users\\Windows Home\\Desktop\\COMP2139 Lab 7 Clone\\ COMP2139-ICE\\COMP2139-ICE.csproj",
       "packagesPath": "C:\\Users\\Windows Home\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Windows Home\\Desktop\\F25\\COMP2139\\COMP2139-ICE\\ COMP2139-ICE\\obj\\",
+      "outputPath": "C:\\Users\\Windows Home\\Desktop\\COMP2139 Lab 7 Clone\\ COMP2139-ICE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Windows Home\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,4 +1,4 @@
-﻿@model ProjectTask 
+﻿@model ProjectTask
 
 @{
     ViewData["Title"] = "Delete Task";
@@ -35,7 +35,7 @@
 </div>
 
 <!-- Form to confirm deletion -->
-<form asp-action="DeleteConfirmed" asp-route-id="@Model.ProjectId" method="post">
+<form asp-action="DeleteConfirmed" asp-route-ProjectTaskId="@Model.ProjectTaskId" method="post">
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.ProjectTaskId)
     <input type="submit" value="Delete" class="btn btn-danger"/>

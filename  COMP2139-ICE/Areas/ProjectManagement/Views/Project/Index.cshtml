@@ -34,9 +34,11 @@
             
             <th>Description</th>
             
-            <th>Action</th> 
-            <!-- Add other project properties as needed -->
+            <th>Summary</th>
             
+            <th>Action</th>
+            <!-- Add other project properties as needed -->
+
         </tr>
         
         </thead>
@@ -52,11 +54,14 @@
             <tr>
                 
                 <td>@project.ProjectId</td>
-                
-                <td>@project.Name</td>
-                
-                <td>@project.Description</td>
 
+                <!--Week 10 - Lab 8-->
+                <td>@Html.DisplayFor(modelItem => project.Name, "ProjectName")</td> <!-- Uses ProjectName.cshtml -->
+                <td>@Html.DisplayFor(modelItem => project.Description, "ProjectDescription") <!-- Uses ProjectDescription.cshtml --></td>
+                   
+                <!--Week 10 - Lab 8 -- ViewComponent-->
+                <td>@await Component.InvokeAsync("ProjectSummary", new {projectId = project.ProjectId})</td>
+                
                 <td>
                     <!--Lab4 - Part5 - #1 -->
                     <!-- "Details" -->

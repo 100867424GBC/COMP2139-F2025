@@ -34,10 +34,10 @@
             
             <!-- Part 3 #1 -->
             <dt class="col-sm-3">Start Date</dt>
-            <dd class="col-sm-9">@Model.StartDate.ToShortDateString()</dd>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.StartDate, "DateTime")</dd>
             
             <dt class="col-sm-3">End Date</dt>
-            <dd class="col-sm-9">@Model.EndDate.ToShortDateString()</dd>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.EndDate, "DateTime")</dd>
             
             <dt class="col-sm-3">Status</dt>
             <dd class="col-sm-9">@Model.Status</dd>
