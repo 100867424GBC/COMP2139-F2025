@@ -1,10 +1,13 @@
-﻿using COMP2139_ICE.Data;
-using COMP2139_ICE.Models;
+﻿using COMP2139_ICE.Areas.ProjectManagement.Models;
+using COMP2139_ICE.Data;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace COMP2139_ICE.Controllers;
-[Route("Project")] //localhost:5090/Project
+namespace COMP2139_ICE.Areas.ProjectManagement.Controllers;
+
+[Area("ProjectManagement")]
+[Route("[area]/[controller]/[action]")]
 public class ProjectController : Controller
 
 {
@@ -35,7 +38,7 @@ public class ProjectController : Controller
     [HttpPost("Create")]
     
     [ValidateAntiForgeryToken]
-
+    
     public IActionResult Create(Project project)
 
     {
@@ -44,16 +47,16 @@ public class ProjectController : Controller
             // Convert to UTC before saving
             project.StartDate = ToUtc(project.StartDate);
             project.EndDate = ToUtc(project.EndDate);
-            
+
             _context.Projects.Add(project);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
-        
+
         return View(project);
     }
-    
+
     private DateTime ToUtc(DateTime input)
 
     {
@@ -76,6 +79,7 @@ public class ProjectController : Controller
         {
             return NotFound();
         }
+
         return View(project);
     }
 
@@ -88,6 +92,7 @@ public class ProjectController : Controller
         {
             return NotFound();
         }
+
         return View(project);
     }
 
@@ -119,8 +124,10 @@ public class ProjectController : Controller
                     throw;
                 }
             }
+
             return RedirectToAction(nameof(Index));
         }
+
         return View(project);
     }
 
@@ -143,10 +150,10 @@ public class ProjectController : Controller
 
         return View(project); // Loads Delete.cshtml
     }
-    
+
     // POST: Project/Delete/5
     [HttpPost("DeleteConfirmed/{id:int}")]
-
+    
     [ValidateAntiForgeryToken]
     public IActionResult DeleteConfirmed(int id)
     {
@@ -157,7 +164,7 @@ public class ProjectController : Controller
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
-        
+
         return View(project);
     }
 
@@ -166,9 +173,9 @@ public class ProjectController : Controller
     {
         return _context.Projects.Any(e => e.ProjectId == id);
     }
+
     
-    
-    
+
     // Lab 6 - Project Search Functionality
     // Custom route for search functionality
     // Accessible at /Projects/Search/{searchString?}
@@ -198,10 +205,10 @@ public class ProjectController : Controller
         // Asynchronous execution means this method does not block the thread while waiting for the database.
         // Instead of blocking, ASP.NET Core can process other incoming requests while waiting for the result.
         // This improves scalability and application responsiveness.
-        
+
         // Execute the query asynchronously using `ToListAsync()`
         var projects = await projectsQuery.ToListAsync();
-        
+
         // ❗ HOW ASYNC WORKS HERE? ❗
         // `await` releases the current thread while waiting for the query execution to complete.
         // When the database call finishes, execution resumes on this method at this point.
@@ -214,3 +221,4 @@ public class ProjectController : Controller
         return View("Index", projects);
     }
 }
+
