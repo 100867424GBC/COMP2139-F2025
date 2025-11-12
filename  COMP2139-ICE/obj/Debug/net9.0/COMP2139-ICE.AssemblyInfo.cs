@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("COMP2139-ICE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f0498140e3d08a7fb0d5def927430a447aa1cc0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36a6580290f0007a8ba2220c0bd4a04bf1902a1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("COMP2139-ICE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("COMP2139-ICE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
