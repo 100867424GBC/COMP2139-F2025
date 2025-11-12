@@ -11,6 +11,8 @@ public class ApplicationDbContext : DbContext
     
     public DbSet<ProjectTask> ProjectTasks { get; set; }
     
+    public DbSet<ProjectTask> ProjectComments { get; set; }
+    
     //Week6
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

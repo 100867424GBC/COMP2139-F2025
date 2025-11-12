@@ -18,28 +18,25 @@ public class ProjectTaskController : Controller
         _context = context;
     }
 
-
+    // GET: Tasks
     [HttpGet("Index/{projectId:int}")]
-    public IActionResult Index(int projectId)
+    public async Task<IActionResult> Index(int projectId) // Lab9
     {
-        var tasks = _context.ProjectTasks
+        var tasks = await _context.ProjectTasks // Lab9
             .Where(t => t.ProjectId == projectId)
-            .ToList();
-        ViewBag.ProjectId = projectId;
+            .ToListAsync(); // Lab9
+        ViewBag.ProjectId = projectId; // Lab9
 
         return View(tasks);
     }
 
-
+    // GET: Tasks/Details/5
     [HttpGet("Details/{id:int}")]
-    public IActionResult Details(int id)
+    public async Task<IActionResult> Details(int id) // Lab9
     {
-        
-        var task = _context.ProjectTasks
-                
+        var task = await _context.ProjectTasks // Lab9
             .Include(t => t.Project) // Include related project data 
-            
-            .FirstOrDefault(t => t.ProjectTaskId == id);
+            .FirstOrDefaultAsync(t => t.ProjectTaskId == id); // Lab9
 
         if (task == null)
         {
@@ -49,10 +46,10 @@ public class ProjectTaskController : Controller
         return View(task);
     }
 
-    [HttpGet("Create")]
-    public IActionResult Create(int projectId)
+    [HttpGet("Create/{projectId:int}")]
+    public async Task<IActionResult> Create(int projectId) // Lab9
     {
-        var project = _context.Projects.Find(projectId);
+        var project = await _context.Projects.FindAsync(projectId); // Lab9
 
         if (project == null)
         {
@@ -62,61 +59,56 @@ public class ProjectTaskController : Controller
         var task = new ProjectTask
         {
             ProjectId = projectId,
-
+            
             Title = "",
-
+            
             Description = ""
         };
         return View(task);
     }
 
-
-    [HttpPost("Create")]
+    [HttpPost("Create/{projectId:int}")]
     [ValidateAntiForgeryToken]
-    
-    public IActionResult Create([Bind("Title", "Description", "ProjectId")] ProjectTask task)
+    public async Task<IActionResult> Create([Bind("Title", "Description", "ProjectId")] ProjectTask task) // Lab9
     {
         if (ModelState.IsValid)
         {
-            _context.ProjectTasks.Add(task);
-
-            _context.SaveChanges();
+            await _context.ProjectTasks.AddAsync(task); // Lab9
+            await _context.SaveChangesAsync(); // Lab9
 
             return RedirectToAction(nameof(Index), new { projectId = task.ProjectId });
         }
 
-        ViewBag.Projects = new SelectList(_context.Projects, "ProjectId", "Name", task.ProjectId);
+        var projects = await _context.Projects.ToListAsync(); // Lab9
+        ViewBag.Projects = new SelectList(projects, "ProjectId", "Name", task.ProjectId); // Lab9
 
         return View(task);
     }
 
-
+    
     [HttpGet("Edit/{id:int}")]
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id) // Lab9
     {
-        var task = _context.ProjectTasks
-                
-            .Include(t => t.Project) // Include related project data 
-            
-            .FirstOrDefault(t => t.ProjectTaskId == id);
+        var task = await _context.ProjectTasks // Lab9
+            .Include(t => t.Project)
+            .FirstOrDefaultAsync(t => t.ProjectTaskId == id); // Lab9
 
         if (task == null)
         {
             return NotFound();
         }
 
-        ViewBag.Projects = new SelectList(_context.Projects, "ProjectId", "Name", task.ProjectId);
+        var projects = await _context.Projects.ToListAsync(); // Lab9
+        ViewBag.Projects = new SelectList(projects, "ProjectId", "Name", task.ProjectId); // Lab9
 
         return View(task);
     }
 
-
+    
     [HttpPost("Edit/{id:int}")]
     
     [ValidateAntiForgeryToken]
-    
-    public IActionResult Edit(int id, [Bind("ProjectTaskId", "Title", "Description", "ProjectId")] ProjectTask task)
-
+    public async Task<IActionResult> Edit(int id, [Bind("ProjectTaskId", "Title", "Description", "ProjectId")] ProjectTask task) // Lab9
     {
         
         if (id != task.ProjectTaskId)
@@ -128,29 +120,24 @@ public class ProjectTaskController : Controller
         {
             
             _context.ProjectTasks.Update(task);
-
-            _context.SaveChanges();
-
+            await _context.SaveChangesAsync(); // Lab9
             return RedirectToAction(nameof(Index), new { projectId = task.ProjectId });
             
         }
 
-        ViewBag.Projects = new SelectList(_context.Projects, "ProjectId", "Name", task.ProjectId);
+        var projects = await _context.Projects.ToListAsync(); // Lab9
+        ViewBag.Projects = new SelectList(projects, "ProjectId", "Name", task.ProjectId); // Lab9
 
         return View(task);
     }
 
-
-    [HttpGet("Delete/{id:int}")]
     
-    public IActionResult Delete(int id)
+    [HttpGet("Delete/{id:int}")]
+    public async Task<IActionResult> Delete(int id) // Lab9
     {
-        
-        var task = _context.ProjectTasks
-                
-            .Include(t => t.Project) // Include related project data 
-            
-            .FirstOrDefault(t => t.ProjectTaskId == id);
+        var task = await _context.ProjectTasks // Lab9
+            .Include(t => t.Project)
+            .FirstOrDefaultAsync(t => t.ProjectTaskId == id); // Lab9
 
         if (task == null)
         {
@@ -161,19 +148,18 @@ public class ProjectTaskController : Controller
     }
 
     
-
+    
     [HttpPost("DeleteConfirmed/{id:int}")]
     
     [ValidateAntiForgeryToken]
-    
-    public IActionResult DeleteConfirmed(int projectTaskId)
+    public async Task<IActionResult> DeleteConfirmed(int projectTaskId) // Lab9
     {
-        var task = _context.ProjectTasks.Find(projectTaskId);
+        var task = await _context.ProjectTasks.FindAsync(projectTaskId); // Lab9
 
         if (task != null)
         {
             _context.ProjectTasks.Remove(task);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync(); // Lab9
 
             return RedirectToAction(nameof(Index), new { projectId = task.ProjectId });
             
@@ -184,8 +170,8 @@ public class ProjectTaskController : Controller
 
     // Lab 6 - Search ProjectTasks
     // GET: ProjectTasks/Search/{projectId?}/{searchString?}
-    [HttpGet("Search/{searchString?}")]
-    public async Task<IActionResult> Search(int? projectId, string searchString)
+    [HttpGet("Search")]
+    public async Task<IActionResult> Search(int? projectId, string searchString) // Lab9
     {
         // Start with all tasks as an IQueryable query (deferred execution)
         var taskQuery = _context.ProjectTasks.AsQueryable();
@@ -199,7 +185,7 @@ public class ProjectTaskController : Controller
             taskQuery = taskQuery.Where(t => t.ProjectId == projectId.Value);
         }
 
-        // ❗ FIXED: Apply search filter when searchString is provided
+        // Apply search filter when searchString is provided
         if (searchPerformed)
         {
             searchString = searchString.ToLower(); // Case-insensitive search
@@ -211,10 +197,10 @@ public class ProjectTaskController : Controller
             );
         }
 
-        // ❗ WHY ASYNC? ❗
+        // WHY ASYNC?
         // The database query is executed asynchronously using `ToListAsync()`
         // This prevents blocking the main thread while waiting for the result.
-        var tasks = await taskQuery.ToListAsync();
+        var tasks = await taskQuery.ToListAsync(); // Lab9
 
         // Pass search metadata to the view for UI updates
         ViewBag.ProjectId = projectId;

@@ -21,9 +21,9 @@ public class ProjectController : Controller
 
     // *GET: Project
     [HttpGet("")]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var projects = _context.Projects.ToList();
+        var projects = await _context.Projects.ToListAsync(); // Lab9
         return View(projects);
     }
 
@@ -38,9 +38,7 @@ public class ProjectController : Controller
     [HttpPost("Create")]
     
     [ValidateAntiForgeryToken]
-    
-    public IActionResult Create(Project project)
-
+    public async Task<IActionResult> Create(Project project)
     {
         if (ModelState.IsValid)
         {
@@ -48,8 +46,8 @@ public class ProjectController : Controller
             project.StartDate = ToUtc(project.StartDate);
             project.EndDate = ToUtc(project.EndDate);
 
-            _context.Projects.Add(project);
-            _context.SaveChanges();
+            await _context.Projects.AddAsync(project); // Lab9
+            await _context.SaveChangesAsync(); // Lab9
 
             return RedirectToAction("Index");
         }
@@ -58,7 +56,7 @@ public class ProjectController : Controller
     }
 
     private DateTime ToUtc(DateTime input)
-
+    
     {
         if (input.Kind == DateTimeKind.Utc)
             return input;
@@ -71,10 +69,9 @@ public class ProjectController : Controller
 
     // *GET: Project/Details/5
     [HttpGet("Details/{id:int}")]
-    public IActionResult Details(int id)
+    public async Task<IActionResult> Details(int id) // Lab9
     {
-        // FirstOrDefault used to find first project wth matching project ID
-        var project = _context.Projects.FirstOrDefault(p => p.ProjectId == id);
+        var project = await _context.Projects.FirstOrDefaultAsync(p => p.ProjectId == id); // Lab9
         if (project == null)
         {
             return NotFound();
@@ -85,9 +82,9 @@ public class ProjectController : Controller
 
     // GET: Project/Edit/5
     [HttpGet("Edit/{id:int}")]
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id) // Lab9
     {
-        var project = _context.Projects.Find(id);
+        var project = await _context.Projects.FindAsync(id); // Lab9
         if (project == null)
         {
             return NotFound();
@@ -99,7 +96,7 @@ public class ProjectController : Controller
     // POST: Project/Edit/5
     [HttpPost("Edit/{id:int}")]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(int id, [Bind("ProjectId,Name,Description")] Project project)
+    public async Task<IActionResult> Edit(int id, [Bind("ProjectId,Name,Description")] Project project) // Lab9
     {
         if (id != project.ProjectId)
         {
@@ -111,11 +108,11 @@ public class ProjectController : Controller
             try
             {
                 _context.Projects.Update(project);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync(); // Lab9
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProjectExists(project.ProjectId))
+                if (!await ProjectExists(project.ProjectId)) // Lab9
                 {
                     return NotFound();
                 }
@@ -133,16 +130,9 @@ public class ProjectController : Controller
 
     // GET: Project/Delete/5
     [HttpGet("Delete/{id:int}")]
-    public IActionResult Delete(int? id)
+    public async Task<IActionResult> Delete(int id) // Lab9
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
-        var project = _context.Projects
-            .FirstOrDefault(p => p.ProjectId == id);
-
+        var project = await _context.Projects.FirstOrDefaultAsync(p => p.ProjectId == id); // Lab9
         if (project == null)
         {
             return NotFound();
@@ -155,13 +145,13 @@ public class ProjectController : Controller
     [HttpPost("DeleteConfirmed/{id:int}")]
     
     [ValidateAntiForgeryToken]
-    public IActionResult DeleteConfirmed(int id)
+    public async Task<IActionResult> DeleteConfirmed(int id) // Lab9
     {
-        var project = _context.Projects.Find(id);
+        var project = await _context.Projects.FindAsync(id); // Lab9
         if (project != null)
         {
             _context.Projects.Remove(project);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync(); // Lab9
             return RedirectToAction(nameof(Index));
         }
 
@@ -169,11 +159,11 @@ public class ProjectController : Controller
     }
 
     // Helper method for concurrency checks
-    private bool ProjectExists(int id)
+    private async Task<bool> ProjectExists(int id) // Lab9
     {
-        return _context.Projects.Any(e => e.ProjectId == id);
+        return await _context.Projects.AnyAsync(e => e.ProjectId == id); // Lab9
     }
-
+    
     
 
     // Lab 6 - Project Search Functionality
@@ -220,5 +210,6 @@ public class ProjectController : Controller
         // Return the filtered list to the Index view (reusing existing UI)
         return View("Index", projects);
     }
+    
 }
 

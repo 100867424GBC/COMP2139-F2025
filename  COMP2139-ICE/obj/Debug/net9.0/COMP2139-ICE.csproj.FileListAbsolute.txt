@@ -1156,7 +1156,6 @@ C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\scopedcss\bundle\COMP2139-ICE.styles.css
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\scopedcss\projectbundle\COMP2139-ICE.bundle.scp.css
-C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\2lpzs2ad9x-b9sayid5wm.gz
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\hyysavb756-61n19gt1b8.gz
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\mtj3tgikg3-xtxxf3hu2r.gz
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\0hyxda7cm4-t1cqhe9u97.gz
@@ -1230,3 +1229,4 @@ C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\COMP2139-ICE.pdb
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\COMP2139-ICE.genruntimeconfig.cache
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\ref\COMP2139-ICE.dll
+C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\2lpzs2ad9x-r4pqqh7w5e.gz
