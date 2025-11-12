@@ -1230,3 +1230,4 @@ C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\COMP2139-ICE.genruntimeconfig.cache
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\ref\COMP2139-ICE.dll
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\2lpzs2ad9x-r4pqqh7w5e.gz
+C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\gcgbshnl1y-c4c3c573mk.gz
