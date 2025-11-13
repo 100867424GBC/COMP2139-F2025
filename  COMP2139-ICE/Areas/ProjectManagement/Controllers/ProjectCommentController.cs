@@ -50,7 +50,7 @@ namespace COMP2139_ICE.Areas.ProjectManagement.Controllers
         /// along with appropriate messages and error details (if any).
         /// </returns>
         [HttpPost]
-        public async Task<IActionResult> AddComment([FromBody] ProjectTask comment)
+        public async Task<IActionResult> AddComment([FromBody] ProjectComment comment)
         {
             // Check if the comment object is valid based on the model's data annotations
             if (ModelState.IsValid)

@@ -83,4 +83,7 @@ public class Project
     public List<ProjectTask>? Tasks { get; set; } = new();
     
     
+    // One-to-Many: A Project can have many ProjectComments
+    public List<ProjectComment>? Comments { get; set; } = new();
+    
 }
