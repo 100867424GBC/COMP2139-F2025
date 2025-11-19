@@ -1337,3 +1337,6 @@ C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\v0zgfp0y55-87fc7y1x7t.gz
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
 C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\obj\Debug\net9.0\compressed\gcgbshnl1y-tajg8kee3r.gz
+C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\bin\Debug\net9.0\MailKit.dll
+C:\Users\Windows Home\Desktop\COMP2139 Lab 7 Clone\ COMP2139-ICE\bin\Debug\net9.0\MimeKit.dll
